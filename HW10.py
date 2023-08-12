@@ -33,11 +33,20 @@ class Record:
         pass
 
     def delete_phone(self, phone):
-        self.phones.remove(phone)
+        if phone in self.phones:
+            index = self.phones.index(phone)
+            self.phones.remove(phone)
+            return index
+        else:
+            return None
 
     def edit_phone(self, old_phone, new_phone):
-        index = self.phones.index(old_phone)
-        self.phones[index] = new_phone
+        if old_phone in self.phones:
+            index = self.phones.index(old_phone)
+            self.phones[index] = new_phone
+            return index
+        else:
+            return None
 
 
 class AddressBook(UserDict):
